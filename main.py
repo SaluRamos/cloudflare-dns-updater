@@ -50,8 +50,8 @@ def UpdateIPDNS():
             finded_frontend_dns = False
             zone_dns = cf.zones.dns_records.get(main_zone_id)
             for x in zone_dns:
-                if x["type"] == "A" and x["name"] == "alwaysrun.net":
-                    print("DNS 'alwaysrun.net' encontrado:")
+                if x["type"] == "A" and x["name"] == "your website":
+                    print("DNS 'your website' encontrado:")
                     if x["content"] != my_ip:
                         print("O ip cadastrado esta desatualizado!")
                         cf.zones.dns_records.delete(main_zone_id, x["id"])
@@ -62,7 +62,7 @@ def UpdateIPDNS():
                         print("ip esta atualizado!")
                     finded_frontend_dns = True
             if finded_frontend_dns == False:
-                print("\nDNS 'alwaysrun.net' não encontrado:")
+                print("\nDNS 'your website' não encontrado:")
                 cf.zones.dns_records.post(main_zone_id, data = frontend_dns_config)
                 print("dns adicionado!\n")
             time.sleep(time_between_updates)
